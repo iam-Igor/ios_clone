@@ -1,11 +1,16 @@
 import { Col, Container, Row } from "react-bootstrap";
 
 const CustomNav = () => {
+  const now = new Date();
+
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
   return (
     <Container fluid className="bg-black text-white py-2">
       <Row className="justify-content-between">
         <Col>
-          22:10
+          {hours}:{minutes}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="0.8em"
