@@ -229,3 +229,9 @@ canvas {
 .bottom-text {
   font-size: 0.8em;
 }
+
+/* camera app */
+
+.circle {
+  font-size: 4em;
+}
