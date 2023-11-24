@@ -10,6 +10,7 @@ import StocksApp from "./comps/StocksApp";
 import PhotosApp from "./comps/PhotosApp";
 import NoteApp from "./comps/NoteApp";
 import MessagesApp from "./comps/MessagesApp";
+import MailApp from "./comps/MailApp";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Photos/" element={<PhotosApp />} />
         <Route path="/Notes/" element={<NoteApp />} />
         <Route path="/Messages/" element={<MessagesApp />} />
+        <Route path="/Mail/" element={<MailApp />} />
       </Routes>
       <AssistiveTouch />
     </BrowserRouter>
