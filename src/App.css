@@ -206,3 +206,26 @@
     transform: rotate(0deg);
   }
 }
+
+/* memosApp */
+
+.bgCustom {
+  background-color: rgb(240, 238, 247);
+}
+
+/* stocks app */
+
+canvas {
+  height: 45px;
+  width: 86px;
+}
+
+/* photos app */
+
+.buttons-text button {
+  font-size: 0.7em;
+}
+
+.bottom-text {
+  font-size: 0.8em;
+}
