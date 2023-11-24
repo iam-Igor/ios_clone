@@ -80,7 +80,7 @@ const PhotosApp = () => {
             <p className="m-0 bottom-text">Album</p>
           </div>
           <div className="text-center">
-            <i class="bi bi-search"></i>
+            <i className="bi bi-search"></i>
             <p className="m-0 bottom-text">Search</p>
           </div>
         </Col>

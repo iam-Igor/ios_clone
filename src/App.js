@@ -8,6 +8,8 @@ import AssistiveTouch from "./comps/AssistiveTouch";
 import VoiceMemos from "./comps/VoiceMemos";
 import StocksApp from "./comps/StocksApp";
 import PhotosApp from "./comps/PhotosApp";
+import NoteApp from "./comps/NoteApp";
+import MessagesApp from "./comps/MessagesApp";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/Memos/" element={<VoiceMemos />} />
         <Route path="/Stocks/" element={<StocksApp />} />
         <Route path="/Photos/" element={<PhotosApp />} />
+        <Route path="/Notes/" element={<NoteApp />} />
+        <Route path="/Messages/" element={<MessagesApp />} />
       </Routes>
       <AssistiveTouch />
     </BrowserRouter>

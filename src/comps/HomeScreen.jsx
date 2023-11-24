@@ -57,7 +57,7 @@ const HomeScreen = () => {
           backgroundImage: `url(${backgroundImg})`,
           backgroundSize: "cover",
         }}
-        className="overflow-hidden pb-3"
+        className="overflow-hidden pb-3 pt-3"
       >
         <Row>
           {allApps.map((app, index) => {

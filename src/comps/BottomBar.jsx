@@ -3,7 +3,7 @@ import SingleApp from "./SingleApp";
 
 const BottomBar = ({ appList }) => {
   return (
-    <Container fluid className="bottom-bar rounded-5 sticky-bottom">
+    <Container fluid className="bottom-bar rounded-5 sticky-bottom mt-5">
       <Row className="rounded-5">
         {appList.map((app, index) => {
           return (
