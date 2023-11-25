@@ -1,10 +1,24 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Tabs, Tab } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const PhotosApp = () => {
   const [photoData, setPhotoData] = useState(null);
 
-  console.log(photoData);
+  const [activeTab, setActiveTab] = useState(true);
+  const [activeTab2, setActiveTab2] = useState(false);
+
+  const imagesAlbum = useSelector((state) => state.photos);
+
+  const tabSettings = (param) => {
+    if (param === "library") {
+      setActiveTab(true);
+      setActiveTab2(false);
+    } else if (param === "album") {
+      setActiveTab2(true);
+      setActiveTab(false);
+    }
+  };
 
   const getPhotos = () => {
     fetch("https://api.pexels.com/v1/search?query=games&per_page=50", {
@@ -50,32 +64,73 @@ const PhotosApp = () => {
           </div>
         </Col>
       </Row>
-      {photoData && (
-        <Row>
-          {photoData.map((photo, index) => {
-            return (
-              <Col key={index} className="col-4 p-0">
-                <img
-                  src={photo.src.large2x}
-                  alt="gallery-item"
-                  style={{ height: "100px", width: "100%" }}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      )}
-      <Row className="sticky-bottom bg-white p-2 py-3">
+      <Tabs id="uncontrolled-tab-example">
+        {photoData && (
+          <Tab eventKey="library" active={activeTab}>
+            <Row>
+              {photoData.map((photo, index) => {
+                return (
+                  <Col key={index} className="col-4 p-0">
+                    <img
+                      src={photo.src.large2x}
+                      alt="gallery-item"
+                      style={{ height: "100px", width: "100%" }}
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
+          </Tab>
+        )}
+
+        <Tab eventKey="album" active={activeTab2}>
+          {imagesAlbum.length > 0 ? (
+            <Row>
+              {imagesAlbum.map((photo, index) => {
+                return (
+                  <Col key={index} className="col-4 p-0">
+                    <img
+                      src={photo}
+                      alt="gallery-item"
+                      style={{ height: "100px", width: "100%" }}
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
+          ) : (
+            <Row>
+              <Col>No images yet</Col>
+            </Row>
+          )}
+        </Tab>
+      </Tabs>
+      <Row className="fixed-bottom bg-white p-2 py-3">
         <Col className="d-flex justify-content-around">
-          <div className="text-center">
+          <div
+            className="text-center"
+            onClick={() => {
+              tabSettings("library");
+            }}
+          >
             <i className="bi bi-images"></i>
             <p className="m-0 bottom-text">Library</p>
           </div>
-          <div className="text-center">
+          <div
+            className="text-center"
+            onClick={() => {
+              setActiveTab("for-you");
+            }}
+          >
             <i className="bi bi-card-text"></i>
             <p className="m-0 bottom-text">For you</p>
           </div>
-          <div className="text-center">
+          <div
+            className="text-center"
+            onClick={() => {
+              tabSettings("album");
+            }}
+          >
             <i className="bi bi-collection"></i>
             <p className="m-0 bottom-text">Album</p>
           </div>

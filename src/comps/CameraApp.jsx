@@ -1,17 +1,18 @@
 import { Col, Container, Row } from "react-bootstrap";
 import bckg from "../assets/IMG_5730.png";
 import { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { PHOTO } from "../redux/store/store";
 
 const CameraApp = () => {
   const videoRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
+  const dispatch = useDispatch();
 
-  // Funzione per catturare l'immagine dalla webcam
   const captureImage = async () => {
     if (videoRef.current) {
       const video = videoRef.current;
 
-      // Accedi alla webcam
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: true,
@@ -27,27 +28,22 @@ const CameraApp = () => {
     captureImage();
   }, []);
 
-  // Funzione per scattare l'immagine
   const takeSnapshot = () => {
     if (videoRef.current) {
       const video = videoRef.current;
 
-      // Crea un canvas per l'elaborazione dell'immagine
       const canvas = document.createElement("canvas");
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       const ctx = canvas.getContext("2d");
 
-      // Disegna il frame attuale del video sul canvas
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      // Ottieni l'immagine come URL base64
       const image = canvas.toDataURL("image/png");
+      dispatch({ type: PHOTO, payload: image });
 
-      // Imposta l'immagine catturata nello stato
       setCapturedImage(image);
 
-      // Stoppa il video stream
       video.srcObject.getVideoTracks().forEach((track) => {
         track.stop();
       });
