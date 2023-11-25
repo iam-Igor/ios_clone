@@ -9,6 +9,10 @@
 .col-custom {
   width: 14.2857%;
 }
+
+.custom-div {
+  width: 45%;
+}
 /* animazione in entrata delle app */
 
 .scale-in-center {
@@ -279,7 +283,15 @@ canvas {
   color: red; /* Cambia il colore del placeholder come desideri */
 }
 
+/* control center */
+
 .control {
-  backdrop-filter: blur(60px);
-  backdrop-filter: grayscale(20%);
+  background-color: lightgray;
+  color: black;
+  backdrop-filter: blur(10px);
+  backdrop-filter: grayscale(50%);
+}
+
+.control-top {
+  background-color: beige;
 }

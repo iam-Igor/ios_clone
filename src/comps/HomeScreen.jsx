@@ -1,5 +1,6 @@
 import { Container, Row, Pagination } from "react-bootstrap";
 import swipeDetect from "swipe-detect";
+import { TRANSITION } from "../redux/store/store";
 
 import weatherApp from "../assets/macOS Big Sur [icons - Update]/01_weather.png";
 import memosApp from "../assets/macOS Big Sur [icons - Update]/03_voice-memos.png";
@@ -26,9 +27,11 @@ import backgroundImg from "../assets/IMG_5730.png";
 import BottomBar from "./BottomBar";
 
 import { useRef, useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const HomeScreen = () => {
   const targetElementRef = useRef(null);
+  const dispatch = useDispatch();
 
   const allApps = [
     { name: "Weather", icon: weatherApp },
@@ -83,6 +86,10 @@ const HomeScreen = () => {
           paginate(2);
         } else if (swipeDirection === "right") {
           paginate(1);
+        } else if (swipeDirection === "down") {
+          dispatch({ type: TRANSITION, payload: true });
+        } else if (swipeDirection === "up") {
+          dispatch({ type: TRANSITION, payload: false });
         }
       };
 

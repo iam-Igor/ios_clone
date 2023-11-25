@@ -15,12 +15,15 @@ import CameraApp from "./comps/CameraApp";
 import Safari from "./comps/Safari";
 import CalendarApp from "./comps/CalendarApp";
 import ControlCenter from "./comps/ControlCenter";
+import { useSelector } from "react-redux";
 
 function App() {
+  const transition = useSelector((state) => state.transition);
+
   return (
     <BrowserRouter>
       <CustomNav />
-      <ControlCenter />
+      <ControlCenter show={transition} />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/Weather/" element={<WeatherApp />} />
