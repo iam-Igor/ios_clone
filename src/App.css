@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.col-custom {
+  width: 14.2857%;
+}
+
 /* homescreen */
 .bottom-bar {
   backdrop-filter: blur(10px);
