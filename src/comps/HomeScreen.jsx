@@ -1,4 +1,5 @@
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Pagination } from "react-bootstrap";
+import swipeDetect from "swipe-detect";
 
 import weatherApp from "../assets/macOS Big Sur [icons - Update]/01_weather.png";
 import memosApp from "../assets/macOS Big Sur [icons - Update]/03_voice-memos.png";
@@ -18,12 +19,17 @@ import appStore from "../assets/macOS Big Sur [icons - Update]/63_appstore.png";
 import cameraApp from "../assets/macOS Big Sur [icons - Update]/32_image-capture.png";
 import findMy from "../assets/macOS Big Sur [icons - Update]/38_findmy.png";
 import contactsApp from "../assets/macOS Big Sur [icons - Update]/50_contacts.png";
+import reminders from "../assets/macOS Big Sur [icons - Update]/16_reminders.png";
 
 import SingleApp from "./SingleApp";
 import backgroundImg from "../assets/IMG_5730.png";
 import BottomBar from "./BottomBar";
 
+import { useRef, useState, useEffect } from "react";
+
 const HomeScreen = () => {
+  const targetElementRef = useRef(null);
+
   const allApps = [
     { name: "Weather", icon: weatherApp },
     { name: "Memos", icon: memosApp },
@@ -40,6 +46,7 @@ const HomeScreen = () => {
     { name: "Camera", icon: cameraApp },
     { name: "Find", icon: findMy },
     { name: "Contacts", icon: contactsApp },
+    { name: "Reminders", icon: reminders },
   ];
 
   const bottomApp = [
@@ -48,24 +55,68 @@ const HomeScreen = () => {
     { name: "Safari", icon: safariApp },
   ];
 
+  const appsPerPage = 15;
+
+  // Stato per tenere traccia della pagina corrente
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Calcola l'indice dell'ultimo e del primo elemento dell'array per la pagina corrente
+  const indexOfLastApp = currentPage * appsPerPage;
+  const indexOfFirstApp = indexOfLastApp - appsPerPage;
+
+  // Estrai le app da visualizzare sulla pagina corrente
+  const currentApps = allApps.slice(indexOfFirstApp, indexOfLastApp);
+
+  // Cambia pagina
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  useEffect(() => {
+    // Verifica che il riferimento all'elemento esista prima di chiamare swipeDetect
+    if (targetElementRef.current) {
+      const handleSwipe = (swipeDirection) => {
+        console.log("Swiped:", swipeDirection);
+        // Tua logica per gestire lo swipe
+        if (swipeDirection === "left") {
+          paginate(2);
+        } else if (swipeDirection === "right") {
+          paginate(1);
+        }
+      };
+
+      swipeDetect(targetElementRef.current, handleSwipe, 50); // Adatta la soglia per il rilevamento dello swipe
+    }
+  }, []);
+
   return (
     <>
       {" "}
       <Container
-        fluid
         style={{
           backgroundImage: `url(${backgroundImg})`,
           backgroundSize: "cover",
         }}
-        className="overflow-hidden pb-3 pt-3"
+        className="overflow-hidden pb-4 pt-3 vh-100"
+        ref={targetElementRef}
       >
         <Row>
-          {allApps.map((app, index) => {
+          {currentApps.map((app, index) => {
             return (
               <SingleApp key={index} appName={app.name} appIcon={app.icon} />
             );
           })}
         </Row>
+        <Pagination>
+          {Array.from({ length: Math.ceil(allApps.length / appsPerPage) }).map(
+            (item, index) => (
+              <Pagination.Item key={index} active={index + 1 === currentPage}>
+                {index + 1}
+              </Pagination.Item>
+            )
+          )}
+        </Pagination>
         <BottomBar appList={bottomApp} />
       </Container>
     </>

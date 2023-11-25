@@ -14,11 +14,13 @@ import MailApp from "./comps/MailApp";
 import CameraApp from "./comps/CameraApp";
 import Safari from "./comps/Safari";
 import CalendarApp from "./comps/CalendarApp";
+import ControlCenter from "./comps/ControlCenter";
 
 function App() {
   return (
     <BrowserRouter>
       <CustomNav />
+      <ControlCenter />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/Weather/" element={<WeatherApp />} />
