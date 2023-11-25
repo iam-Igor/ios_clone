@@ -1,5 +1,12 @@
+/* general */
+
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
 
+.pointer {
+  cursor: pointer;
+}
+
+/* homescreen */
 .bottom-bar {
   backdrop-filter: blur(10px);
   backdrop-filter: grayscale(50%);
@@ -228,6 +235,10 @@ canvas {
 
 .bottom-text {
   font-size: 0.8em;
+}
+
+.top-bar-img {
+  background-color: rgb(240, 238, 247);
 }
 
 /* camera app */

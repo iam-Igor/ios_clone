@@ -48,7 +48,7 @@ const PhotosApp = () => {
 
   return (
     <Container>
-      <Row className="mt-2 sticky-top z-index-2">
+      <Row className="mt-2 sticky-top z-index-2 top-bar-img py-2">
         <Col className="d-flex justify-content-between">
           <div className="d-flex align-items-center">
             <i className="bi bi-chevron-left fs-4"></i>
@@ -108,34 +108,34 @@ const PhotosApp = () => {
       <Row className="fixed-bottom bg-white p-2 py-3">
         <Col className="d-flex justify-content-around">
           <div
-            className="text-center"
+            className="text-center pointer"
             onClick={() => {
               tabSettings("library");
             }}
           >
-            <i className="bi bi-images"></i>
+            <i className="bi bi-images fs-3"></i>
             <p className="m-0 bottom-text">Library</p>
           </div>
           <div
-            className="text-center"
+            className="text-center pointer"
             onClick={() => {
               setActiveTab("for-you");
             }}
           >
-            <i className="bi bi-card-text"></i>
+            <i className="bi bi-card-text fs-3"></i>
             <p className="m-0 bottom-text">For you</p>
           </div>
           <div
-            className="text-center"
+            className="text-center pointer"
             onClick={() => {
               tabSettings("album");
             }}
           >
-            <i className="bi bi-collection"></i>
+            <i className="bi bi-collection fs-3"></i>
             <p className="m-0 bottom-text">Album</p>
           </div>
-          <div className="text-center">
-            <i className="bi bi-search"></i>
+          <div className="text-center pointer">
+            <i className="bi bi-search fs-3"></i>
             <p className="m-0 bottom-text">Search</p>
           </div>
         </Col>
