@@ -12,6 +12,7 @@ import NoteApp from "./comps/NoteApp";
 import MessagesApp from "./comps/MessagesApp";
 import MailApp from "./comps/MailApp";
 import CameraApp from "./comps/CameraApp";
+import Safari from "./comps/Safari";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/Messages/" element={<MessagesApp />} />
         <Route path="/Mail/" element={<MailApp />} />
         <Route path="/Camera/" element={<CameraApp />} />
+        <Route path="/Safari/" element={<Safari />} />
       </Routes>
       <AssistiveTouch />
     </BrowserRouter>

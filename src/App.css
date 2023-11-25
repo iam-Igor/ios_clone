@@ -235,3 +235,8 @@ canvas {
 .circle {
   font-size: 4em;
 }
+
+/* safari */
+.custom-placeholder::placeholder {
+  color: red; /* Cambia il colore del placeholder come desideri */
+}
