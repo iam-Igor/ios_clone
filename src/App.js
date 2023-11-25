@@ -13,26 +13,28 @@ import MessagesApp from "./comps/MessagesApp";
 import MailApp from "./comps/MailApp";
 import CameraApp from "./comps/CameraApp";
 import Safari from "./comps/Safari";
+import Calculator from "./comps/calculator/Calculator";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <CustomNav />
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/Weather/" element={<WeatherApp />} />
-        <Route path="/Memos/" element={<VoiceMemos />} />
-        <Route path="/Stocks/" element={<StocksApp />} />
-        <Route path="/Photos/" element={<PhotosApp />} />
-        <Route path="/Notes/" element={<NoteApp />} />
-        <Route path="/Messages/" element={<MessagesApp />} />
-        <Route path="/Mail/" element={<MailApp />} />
-        <Route path="/Camera/" element={<CameraApp />} />
-        <Route path="/Safari/" element={<Safari />} />
-      </Routes>
-      <AssistiveTouch />
-    </BrowserRouter>
-  );
+   return (
+      <BrowserRouter>
+         <CustomNav />
+         <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/Weather/" element={<WeatherApp />} />
+            <Route path="/Memos/" element={<VoiceMemos />} />
+            <Route path="/Stocks/" element={<StocksApp />} />
+            <Route path="/Photos/" element={<PhotosApp />} />
+            <Route path="/Notes/" element={<NoteApp />} />
+            <Route path="/Messages/" element={<MessagesApp />} />
+            <Route path="/Mail/" element={<MailApp />} />
+            <Route path="/Camera/" element={<CameraApp />} />
+            <Route path="/Safari/" element={<Safari />} />
+            <Route path="/Calculator/" element={<Calculator />} />
+         </Routes>
+         <AssistiveTouch />
+      </BrowserRouter>
+   );
 }
 
 export default App;
