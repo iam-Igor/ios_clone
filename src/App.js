@@ -16,6 +16,7 @@ import Safari from "./comps/Safari";
 import CalendarApp from "./comps/CalendarApp";
 import ControlCenter from "./comps/ControlCenter";
 import { useSelector } from "react-redux";
+import LockScreen from "./comps/LockScreen";
 
 function App() {
   const transition = useSelector((state) => state.transition);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Camera/" element={<CameraApp />} />
         <Route path="/Safari/" element={<Safari />} />
         <Route path="/Calendar/" element={<CalendarApp />} />
+        <Route path="/Lockscreen/" element={<LockScreen />} />
       </Routes>
       <AssistiveTouch />
     </BrowserRouter>

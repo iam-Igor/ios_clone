@@ -220,6 +220,41 @@
   bottom: -1rem;
 }
 
+.assistive-menu {
+  position: absolute;
+  bottom: 90%;
+}
+
+.open {
+  animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes scale-in-center {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close {
+  animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@keyframes scale-out-center {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+
 /* wiggle icons */
 
 .wiggle {
@@ -293,4 +328,106 @@ canvas {
 .control-top {
   backdrop-filter: blur(1000px) !important;
   background-color: transparent !important;
+}
+
+/* lockscreen */
+
+.lock-time {
+  font-size: 6em;
+}
+
+.lock-bottom i {
+  font-size: 3.7em;
+}
+
+.lock-bottom {
+  position: fixed;
+  bottom: 0%;
+}
+
+.bounce-top {
+  animation: bounce-top 1s linear forwards;
+}
+
+@keyframes bounce-top {
+  0% {
+    transform: translateY(-20px);
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-18px);
+    animation-timing-function: ease-in;
+  }
+  65% {
+    transform: translateY(-16px);
+    animation-timing-function: ease-in;
+  }
+  82% {
+    transform: translateY(-10px);
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(-5px);
+    animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+
+.lock-btn {
+  width: 33%;
+  padding: 0.5em;
+  font-size: 2.5em;
+  backdrop-filter: blur(30px);
+  background-color: transparent;
+  border: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.lock-btn:last-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-cont {
+  margin-top: 8em;
+}
+
+.vibrate {
+  animation: vibrate-1 0.5s linear forwards;
+}
+
+@keyframes vibrate-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
