@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
 import {
+   EVALUATE,
+   OPERATION,
    RESULT,
    VALUE_1,
    VALUE_2,
@@ -9,7 +11,7 @@ import {
    VALUE_VIEW,
 } from "../../redux/store/store";
 
-const CalSingleBtn = ({ num }) => {
+const CalSingleOperation = ({ num }) => {
    // console.log("number", typeof num, num);
    const [isExp, setExp] = useState(false);
    // const [value1, setValue1] = useState("0");
@@ -70,36 +72,25 @@ const CalSingleBtn = ({ num }) => {
 
       // set value 2
       // render in the view
-      if (!isNaN(Number(btnValue)) && !isExp) {
-         reduxValue2 === "0"
-            ? dispatch({ type: VALUE_2, payload: btnValue })
-            : dispatch({ type: VALUE_2, payload: btnValue + reduxValue2 });
-
-         console.log("new value: ", tempInput);
-
+      if (expressions.includes(btnValue)) {
          // if the input is expression
-      } else if (expressions.includes(btnValue)) {
-         // console.log("entered to exp", btnValue);
-
-         // setExp(true);
-         // set input value as a temp value
-         // calculate temp with value1 which is 0 at the beginig aslo covert them into Numbers
-         // dispatch({ type: VALUE_2, payload: reduxValueView });
-         if (btnValue === "+") {
-            setAdd(true);
-            setInput1(input2);
-            setResult(Number(input1) + Number(input2));
-            setInput2("0");
-            // dispatch({ type: VALUE_1, payload: reduxValue2 });
-            // dispatch({
-            //    type: RESULT,
-            //    payload: Number(reduxValue1) + Number(reduxValue2),
-            // });
-            // dispatch({ type: VALUE_2, payload: "0" });
-         }
+         dispatch({ type: OPERATION, payload: btnValue });
       }
 
-      // console.log("this is the value of btn: ", e.target.value);
+      if (btnValue === "=") {
+         dispatch({ type: EVALUATE });
+      }
+      // else if (expressions.includes(btnValue)) {
+      //    // console.log("entered to exp", btnValue);
+
+      //    // setExp(true);
+      //    // set input value as a temp value
+      //    // calculate temp with value1 which is 0 at the beginig aslo covert them into Numbers
+      //    // dispatch({ type: VALUE_2, payload: reduxValueView });
+      //    // if (btnValue === "+") {
+      //    //    // someting
+      //    // }
+      // }
    };
 
    return (
@@ -128,4 +119,4 @@ const CalSingleBtn = ({ num }) => {
    );
 };
 
-export default CalSingleBtn;
+export default CalSingleOperation;

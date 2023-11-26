@@ -8,6 +8,9 @@ export const VALUE_1 = "VALUE_1";
 export const VALUE_2 = "VALUE_2";
 export const VALUE_TEMP = "VALUE_TEMP";
 export const VALUE_VIEW = "VALUE_VIEW";
+export const RESULT = "RESULT";
+export const OPERATION = "OPERATION";
+export const EVALUATE = "EVALUATE";
 
 // const bigReducer = combineReducers({
 //    main: mainReducer,
