@@ -28,10 +28,10 @@ const AssistiveTouch = () => {
         evaluateCLick(e.changedTouches[0].clientX);
       }}
     >
-      <div className="fab-wrapper" style={{ position: "absolute" }}>
+      <div className="fab-wrapper col-2" style={{ position: "absolute" }}>
         <img
           src={assistive}
-          style={{ width: "20%" }}
+          style={{ width: "100%" }}
           alt="Assistive Touch"
           className="img"
         />
