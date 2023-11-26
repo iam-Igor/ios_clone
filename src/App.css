@@ -34,6 +34,9 @@
 .bottom-bar {
   backdrop-filter: blur(10px);
   backdrop-filter: grayscale(50%);
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 1em;
 }
 
 .app-icon:hover {
