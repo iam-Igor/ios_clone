@@ -26,6 +26,8 @@ const CalendarApp = () => {
   const year = now.getFullYear();
   const dayOfTheMonth = now.getDate();
 
+  console.log(dayOfTheMonth);
+
   const lastDayOfMonth = new Date(year, monthIndex, 0).getDate();
 
   const daysOfMonth = [];

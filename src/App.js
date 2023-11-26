@@ -1,5 +1,5 @@
+import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import CustomNav from "./comps/CustomNav";
 import HomeScreen from "./comps/HomeScreen";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

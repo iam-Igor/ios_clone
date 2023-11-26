@@ -58,7 +58,7 @@ const HomeScreen = () => {
     { name: "Safari", icon: safariApp },
   ];
 
-  const appsPerPage = 15;
+  const appsPerPage = 13;
 
   // Stato per tenere traccia della pagina corrente
   const [currentPage, setCurrentPage] = useState(1);
