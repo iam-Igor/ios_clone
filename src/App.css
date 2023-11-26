@@ -34,9 +34,6 @@
 .bottom-bar {
   backdrop-filter: blur(10px);
   backdrop-filter: grayscale(50%);
-  position: fixed;
-  bottom: 0;
-  left: 5%;
 }
 
 .app-icon:hover {
@@ -62,7 +59,6 @@
 /* assistive touch */
 
 .fab-wrapper {
-  position: fixed;
   bottom: 18rem;
   right: 3rem;
 }

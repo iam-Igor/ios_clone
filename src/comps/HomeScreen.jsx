@@ -105,7 +105,7 @@ const HomeScreen = () => {
           backgroundImage: `url(${backgroundImg})`,
           backgroundSize: "cover",
         }}
-        className="overflow-hidden pb-4 pt-3 vh-100"
+        className="overflow-hidden pt-3 vh-100"
         ref={targetElementRef}
       >
         <Row>

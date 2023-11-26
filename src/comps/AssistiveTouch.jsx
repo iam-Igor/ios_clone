@@ -1,33 +1,42 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Draggable from "react-draggable";
+import assistive from "../assets/unnamed.webp";
 
 const AssistiveTouch = () => {
   const location = useNavigate();
 
+  const [startCoord, setStartCoord] = useState(null);
+  const [stopCoord, setStopCoord] = useState(null);
+
+  const evaluateCLick = (param) => {
+    setStopCoord(param);
+    if (param === startCoord) {
+      location("/");
+      console.log(param, "parametro stop");
+    }
+  };
+
   return (
-    <div className="fab-wrapper">
-      <input id="fabCheckbox" type="checkbox" className="fab-checkbox" />
-      <label className="fab" htmlFor="fabCheckbox">
-        <span className="fab-dots fab-dots-1"></span>
-        <span className="fab-dots fab-dots-2"></span>
-        <span className="fab-dots fab-dots-3"></span>
-      </label>
-      <div className="fab-wheel">
-        <a
-          className="fab-action fab-action-1"
-          onClick={() => {
-            location("/");
-          }}
-        >
-          <i className="bi bi-house-door-fill"></i>
-        </a>
-        <a className="fab-action fab-action-2">
-          <i className="fas fa-book"></i>
-        </a>
-        <a className="fab-action fab-action-3">
-          <i className="fas fa-address-book"></i>
-        </a>
+    <Draggable
+      onStart={(e) => {
+        console.log("start", e);
+        setStartCoord(e.changedTouches[0].clientX);
+      }}
+      onStop={(e) => {
+        console.log("stop", e);
+        evaluateCLick(e.changedTouches[0].clientX);
+      }}
+    >
+      <div className="fab-wrapper" style={{ position: "absolute" }}>
+        <img
+          src={assistive}
+          style={{ width: "20%" }}
+          alt="Assistive Touch"
+          className="img"
+        />
       </div>
-    </div>
+    </Draggable>
   );
 };
 
