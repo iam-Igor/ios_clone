@@ -130,7 +130,7 @@ const mainReducer = (state = initialState, action) => {
 
 function setNegativePositive(value) {
    if (value.length > 0) {
-      return (value = parseFloat(value) * -1);
+      return String(parseFloat(value) * -1);
    }
 }
 
