@@ -1,15 +1,6 @@
-import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
-import {
-   DECIMAL,
-   // RESULT,
-   // VALUE_1,
-   VALUE_2,
-   // VALUE_TEMP,
-   // VALUE_VIEW,
-   ZERO,
-} from "../../redux/store/store";
+import { DECIMAL, VALUE_2, ZERO } from "../../redux/store/store";
 
 const CalSingleBtn = ({ num }) => {
    const reduxValue2 = useSelector((state) => state.value2);
