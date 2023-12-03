@@ -13,6 +13,7 @@ import {
    PERCENT,
    DECIMAL,
    ZERO,
+   NEGATIVE_POSITIVE,
 } from "../store/store";
 
 const initialState = {
@@ -72,6 +73,12 @@ const mainReducer = (state = initialState, action) => {
          };
       }
 
+      case NEGATIVE_POSITIVE:
+         return {
+            ...state,
+            value2: setNegativePositive(state.value2),
+         };
+
       case OPERATION:
          if (state.operation === "" && state.value2 === "") {
             return state;
@@ -120,6 +127,12 @@ const mainReducer = (state = initialState, action) => {
          return state;
    }
 };
+
+function setNegativePositive(value) {
+   if (value.length > 0) {
+      return (value = parseFloat(value) * -1);
+   }
+}
 
 function setZero(zero, digit) {
    if (zero === "0") return digit;

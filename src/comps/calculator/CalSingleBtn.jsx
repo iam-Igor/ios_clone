@@ -3,36 +3,36 @@ import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
 import {
    DECIMAL,
-   RESULT,
-   VALUE_1,
+   // RESULT,
+   // VALUE_1,
    VALUE_2,
-   VALUE_TEMP,
-   VALUE_VIEW,
+   // VALUE_TEMP,
+   // VALUE_VIEW,
    ZERO,
 } from "../../redux/store/store";
 
 const CalSingleBtn = ({ num }) => {
    // console.log("number", typeof num, num);
-   const [isExp, setExp] = useState(false);
+   // const [isExp, setExp] = useState(false);
    // const [value1, setValue1] = useState("0");
 
-   const [isAdd, setAdd] = useState(false);
-   const [input1, setInput1] = useState("0");
-   const [input2, setInput2] = useState("0");
-   const [result, setResult] = useState("0");
-   const [tempInput, setTempInput] = useState("0");
+   // const [isAdd, setAdd] = useState(false);
+   // const [input1, setInput1] = useState("0");
+   // const [input2, setInput2] = useState("0");
+   // const [result, setResult] = useState("0");
+   // const [tempInput, setTempInput] = useState("0");
 
-   const reduxValue1 = useSelector((state) => state.value1);
+   // const reduxValue1 = useSelector((state) => state.value1);
    const reduxValue2 = useSelector((state) => state.value2);
-   const reduxValueTemp = useSelector((state) => state.tempValue);
-   const reduxValueView = useSelector((state) => state.valueView);
+   // const reduxValueTemp = useSelector((state) => state.tempValue);
+   // const reduxValueView = useSelector((state) => state.valueView);
    // console.log("value ", reduxValue1, reduxValue2, reduxValueTemp);
    const dispatch = useDispatch();
 
-   useEffect(() => {
-      setInput1(reduxValue1);
-      setInput2(reduxValue2);
-   }, [reduxValue1, reduxValue2]);
+   // useEffect(() => {
+   //    setInput1(reduxValue1);
+   //    setInput2(reduxValue2);
+   // }, [reduxValue1, reduxValue2]);
 
    const btnClicked = (e) => {
       const btnValue = e.target.value;

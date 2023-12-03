@@ -15,6 +15,7 @@ export const CLEAN = "CLEAN";
 export const PERCENT = "PERCENT";
 export const DECIMAL = "DECIMAL";
 export const ZERO = "ZERO";
+export const NEGATIVE_POSITIVE = "NEGATIVE_POSITIVE";
 
 // const bigReducer = combineReducers({
 //    main: mainReducer,

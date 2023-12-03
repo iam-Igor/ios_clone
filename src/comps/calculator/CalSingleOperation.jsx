@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
    CLEAN,
    EVALUATE,
+   NEGATIVE_POSITIVE,
    OPERATION,
    PERCENT,
    // RESULT,
@@ -33,7 +34,7 @@ const CalSingleOperation = ({ num }) => {
 
    const btnClicked = (e) => {
       const btnValue = e.target.value;
-      const expressions = ["+/-", "/", "x", "-", "+"];
+      const expressions = ["/", "x", "-", "+"];
 
       // set value 2
       // render in the view
@@ -52,6 +53,10 @@ const CalSingleOperation = ({ num }) => {
 
       if (btnValue === "%") {
          dispatch({ type: PERCENT });
+      }
+
+      if (btnValue === "+/-") {
+         dispatch({ type: NEGATIVE_POSITIVE });
       }
    };
 
