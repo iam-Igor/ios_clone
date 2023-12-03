@@ -8,6 +8,7 @@ import {
    VALUE_2,
    VALUE_TEMP,
    VALUE_VIEW,
+   ZERO,
 } from "../../redux/store/store";
 
 const CalSingleBtn = ({ num }) => {
@@ -38,7 +39,7 @@ const CalSingleBtn = ({ num }) => {
 
       // set value 2
       // render in the view
-      if (!isNaN(Number(btnValue)) && btnValue !== ",") {
+      if (!isNaN(Number(btnValue)) && btnValue !== "," && btnValue !== "0") {
          reduxValue2 === ""
             ? dispatch({ type: VALUE_2, payload: btnValue })
             : dispatch({ type: VALUE_2, payload: reduxValue2 + btnValue });
@@ -46,6 +47,10 @@ const CalSingleBtn = ({ num }) => {
 
       if (btnValue === ",") {
          dispatch({ type: DECIMAL });
+      }
+
+      if (btnValue === "0") {
+         dispatch({ type: ZERO, payload: btnValue });
       }
    };
 

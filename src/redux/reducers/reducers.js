@@ -1,3 +1,4 @@
+// import { valueOrDefault } from "chart.js/dist/helpers/helpers.core";
 import {
    ADD_NOTE,
    EVALUATE,
@@ -11,6 +12,7 @@ import {
    CLEAN,
    PERCENT,
    DECIMAL,
+   ZERO,
 } from "../store/store";
 
 const initialState = {
@@ -63,6 +65,13 @@ const mainReducer = (state = initialState, action) => {
          };
       }
 
+      case ZERO: {
+         return {
+            ...state,
+            value2: setZero(state.value2, action.payload),
+         };
+      }
+
       case OPERATION:
          if (state.operation === "" && state.value2 === "") {
             return state;
@@ -111,6 +120,13 @@ const mainReducer = (state = initialState, action) => {
          return state;
    }
 };
+
+function setZero(zero, digit) {
+   if (zero === "0") return digit;
+   else {
+      return zero + digit;
+   }
+}
 
 function includeDecimalValue2(value2) {
    if (value2.includes(".")) return value2;
