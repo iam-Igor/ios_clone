@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
 import {
+   DECIMAL,
    RESULT,
    VALUE_1,
    VALUE_2,
@@ -32,74 +33,20 @@ const CalSingleBtn = ({ num }) => {
       setInput2(reduxValue2);
    }, [reduxValue1, reduxValue2]);
 
-   // useEffect(() => {
-   //    dispatch({
-   //       type: VALUE_2,
-   //       payload: Number(input1) + Number(input2),
-   //    });
-   // }, [isAdd]);
-
-   // useEffect(() => {
-   //    setInput1(reduxValue2);
-   // }, [reduxValue2]);
-
-   // useEffect(() => {
-   //    dispatch({ type: VALUE_2, payload: "0" });
-   // }, [reduxValue1, dispatch]);
-
-   // useEffect(() => {
-   //    dispatch({
-   //       type: RESULT,
-   //       payload: Number(reduxValue1) + Number(reduxValue2),
-   //    });
-   // }, [reduxValue1, reduxValue2, dispatch]);
-
-   // useEffect(() => {
-   //    dispatch({ type: VALUE_2, payload: input2 });
-   // }, [input2, dispatch]);
-   // useEffect(() => {
-   //    dispatch({ type: VALUE_1, payload: input1 });
-   // }, [input1, dispatch]);
-   // useEffect(() => {
-   //    dispatch({ type: RESULT, payload: result });
-   // }, [result, dispatch]);
-
    const btnClicked = (e) => {
       const btnValue = e.target.value;
-      const expressions = ["AC", "+/-", "%", "/", "x", "-", "+", "=", ","];
 
       // set value 2
       // render in the view
-      if (!isNaN(Number(btnValue)) && !isExp) {
-         reduxValue2 === "0"
+      if (!isNaN(Number(btnValue)) && btnValue !== ",") {
+         reduxValue2 === ""
             ? dispatch({ type: VALUE_2, payload: btnValue })
-            : dispatch({ type: VALUE_2, payload: btnValue + reduxValue2 });
-
-         console.log("new value: ", tempInput);
-
-         // if the input is expression
-      } else if (expressions.includes(btnValue)) {
-         // console.log("entered to exp", btnValue);
-
-         // setExp(true);
-         // set input value as a temp value
-         // calculate temp with value1 which is 0 at the beginig aslo covert them into Numbers
-         // dispatch({ type: VALUE_2, payload: reduxValueView });
-         if (btnValue === "+") {
-            setAdd(true);
-            setInput1(input2);
-            setResult(Number(input1) + Number(input2));
-            setInput2("0");
-            // dispatch({ type: VALUE_1, payload: reduxValue2 });
-            // dispatch({
-            //    type: RESULT,
-            //    payload: Number(reduxValue1) + Number(reduxValue2),
-            // });
-            // dispatch({ type: VALUE_2, payload: "0" });
-         }
+            : dispatch({ type: VALUE_2, payload: reduxValue2 + btnValue });
       }
 
-      // console.log("this is the value of btn: ", e.target.value);
+      if (btnValue === ",") {
+         dispatch({ type: DECIMAL });
+      }
    };
 
    return (

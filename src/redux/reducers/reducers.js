@@ -3,21 +3,24 @@ import {
    EVALUATE,
    OPERATION,
    PHOTO,
-   RESULT,
+   // RESULT,
    VALUE_1,
    VALUE_2,
-   VALUE_TEMP,
-   VALUE_VIEW,
+   // VALUE_TEMP,
+   // VALUE_VIEW,
+   CLEAN,
+   PERCENT,
+   DECIMAL,
 } from "../store/store";
 
 const initialState = {
    notes: [],
    photos: [],
-   value1: "0",
-   value2: "0",
-   tempValue: "0",
-   valueView: "0",
-   result: 0,
+   value1: "",
+   value2: "",
+   // tempValue: "0",
+   // valueView: "0",
+   // result: 0,
    operation: "",
 };
 
@@ -38,6 +41,27 @@ const mainReducer = (state = initialState, action) => {
             ...state,
             value2: action.payload,
          };
+
+      case CLEAN:
+         return {
+            ...state,
+            value1: "",
+            value2: "",
+         };
+
+      case PERCENT:
+         return {
+            ...state,
+            value1: "",
+            value2: state.value2 / 100,
+         };
+
+      case DECIMAL: {
+         return {
+            ...state,
+            value2: includeDecimalValue2(state.value2),
+         };
+      }
 
       case OPERATION:
          if (state.operation === "" && state.value2 === "") {
@@ -83,16 +107,17 @@ const mainReducer = (state = initialState, action) => {
             value2: evaluate(state),
          };
 
-      case VALUE_TEMP:
-         return { ...state, tempValue: action.payload };
-      case VALUE_VIEW:
-         return { ...state, valueView: action.payload };
-      case RESULT:
-         return { ...state, result: action.payload };
       default:
          return state;
    }
 };
+
+function includeDecimalValue2(value2) {
+   if (value2.includes(".")) return value2;
+   else {
+      return value2 + ".";
+   }
+}
 
 function evaluate({ value1, value2, operation }) {
    const previous = parseFloat(value1);
@@ -111,6 +136,9 @@ function evaluate({ value1, value2, operation }) {
          break;
       case "/":
          computation = previous / current;
+         break;
+      case "AC":
+         computation = "";
          break;
 
       default:

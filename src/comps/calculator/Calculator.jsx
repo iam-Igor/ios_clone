@@ -29,30 +29,12 @@ function Calculator() {
       <Container>
          <Row>
             <Col>
-               <div className="w-100 text-end">{reduxValue2}</div>
-               <Form>
-                  <Form.Group className="mb-3">
-                     <Form.Control
-                        type="number"
-                        placeholder="input1"
-                        value={reduxValue1}
-                     />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                     <Form.Control
-                        type="number"
-                        placeholder="input2"
-                        value={reduxValue2}
-                     />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                     <Form.Control
-                        type="number"
-                        placeholder="result"
-                        value={reduxResult}
-                     />
-                  </Form.Group>
-               </Form>
+               <div className="w-100 text-end calc-display-top p-3">
+                  {reduxValue1}
+               </div>
+               <div className="w-100 text-end calc-display fs-1 p-3">
+                  {reduxValue2}
+               </div>
             </Col>
          </Row>
          <Row>

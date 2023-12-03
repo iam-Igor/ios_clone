@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
 import {
+   CLEAN,
    EVALUATE,
    OPERATION,
-   RESULT,
-   VALUE_1,
-   VALUE_2,
-   VALUE_TEMP,
-   VALUE_VIEW,
+   PERCENT,
+   // RESULT,
+   // VALUE_1,
+   // VALUE_2,
+   // VALUE_TEMP,
+   // VALUE_VIEW,
 } from "../../redux/store/store";
 
 const CalSingleOperation = ({ num }) => {
@@ -26,49 +28,12 @@ const CalSingleOperation = ({ num }) => {
    const reduxValue2 = useSelector((state) => state.value2);
    const reduxValueTemp = useSelector((state) => state.tempValue);
    const reduxValueView = useSelector((state) => state.valueView);
-   // console.log("value ", reduxValue1, reduxValue2, reduxValueTemp);
+
    const dispatch = useDispatch();
-
-   useEffect(() => {
-      setInput1(reduxValue1);
-      setInput2(reduxValue2);
-   }, [reduxValue1, reduxValue2]);
-
-   // useEffect(() => {
-   //    dispatch({
-   //       type: VALUE_2,
-   //       payload: Number(input1) + Number(input2),
-   //    });
-   // }, [isAdd]);
-
-   // useEffect(() => {
-   //    setInput1(reduxValue2);
-   // }, [reduxValue2]);
-
-   // useEffect(() => {
-   //    dispatch({ type: VALUE_2, payload: "0" });
-   // }, [reduxValue1, dispatch]);
-
-   // useEffect(() => {
-   //    dispatch({
-   //       type: RESULT,
-   //       payload: Number(reduxValue1) + Number(reduxValue2),
-   //    });
-   // }, [reduxValue1, reduxValue2, dispatch]);
-
-   // useEffect(() => {
-   //    dispatch({ type: VALUE_2, payload: input2 });
-   // }, [input2, dispatch]);
-   // useEffect(() => {
-   //    dispatch({ type: VALUE_1, payload: input1 });
-   // }, [input1, dispatch]);
-   // useEffect(() => {
-   //    dispatch({ type: RESULT, payload: result });
-   // }, [result, dispatch]);
 
    const btnClicked = (e) => {
       const btnValue = e.target.value;
-      const expressions = ["AC", "+/-", "%", "/", "x", "-", "+", "=", ","];
+      const expressions = ["+/-", "/", "x", "-", "+"];
 
       // set value 2
       // render in the view
@@ -80,17 +45,14 @@ const CalSingleOperation = ({ num }) => {
       if (btnValue === "=") {
          dispatch({ type: EVALUATE });
       }
-      // else if (expressions.includes(btnValue)) {
-      //    // console.log("entered to exp", btnValue);
 
-      //    // setExp(true);
-      //    // set input value as a temp value
-      //    // calculate temp with value1 which is 0 at the beginig aslo covert them into Numbers
-      //    // dispatch({ type: VALUE_2, payload: reduxValueView });
-      //    // if (btnValue === "+") {
-      //    //    // someting
-      //    // }
-      // }
+      if (btnValue === "AC") {
+         dispatch({ type: CLEAN });
+      }
+
+      if (btnValue === "%") {
+         dispatch({ type: PERCENT });
+      }
    };
 
    return (

@@ -6,3 +6,11 @@
 .btn-cal-expression {
    background-color: orange;
 }
+
+.calc-display {
+   height: 3em;
+}
+
+.calc-display-top {
+   height: 2em;
+}
