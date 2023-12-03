@@ -4,17 +4,10 @@ import Col from "react-bootstrap/Col";
 import CalSingleBtn from "./CalSingleBtn";
 import "./Calculator.css";
 import { useSelector } from "react-redux";
-import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import CalSingleOperation from "./CalSingleOperation";
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { VALUE_1 } from "../../redux/store/store";
 
 function Calculator() {
-   // const [isValue1, setIsValue1] = useState(false);
-   // const [value1, setValue1] = useState("0");
-
    const reduxValue1 = useSelector((state) => state.value1);
    const reduxValue2 = useSelector((state) => state.value2);
 

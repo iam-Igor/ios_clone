@@ -4,11 +4,8 @@ import {
    EVALUATE,
    OPERATION,
    PHOTO,
-   // RESULT,
    VALUE_1,
    VALUE_2,
-   // VALUE_TEMP,
-   // VALUE_VIEW,
    CLEAN,
    PERCENT,
    DECIMAL,
@@ -21,9 +18,6 @@ const initialState = {
    photos: [],
    value1: "",
    value2: "",
-   // tempValue: "0",
-   // valueView: "0",
-   // result: 0,
    operation: "",
 };
 
@@ -37,8 +31,7 @@ const mainReducer = (state = initialState, action) => {
       // calculator
       case VALUE_1:
          return { ...state, value1: action.payload };
-      // case VALUE_1:
-      //    return { ...state, value1: action.payload };
+
       case VALUE_2:
          return {
             ...state,
